@@ -1,116 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./src/assets/imagenes/CaraTras.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JUEGO DE MEMORIA</title>
   </head>
   <body>
     <div id="root"></div>
-    <script type="text/babel">
-        const Carta = ({
-            onClick, carta, indice, Inactiva, Mostrada, Asertada 
-        }) => {
-            const enClick = () => {!Inactiva && !Asertada && onClick(i)}
-
-            return (
-                <div className = "Carta"
-                onClick={enClick}
-                style ={{
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: '4px',
-                    transition: '0.3s',
-                    transformStyle: 'preserve-3d',
-                    position: 'relative',
-                    cursor: 'pointer'
-                }}>
-                    <div className="caraTrasera" style ={{
-                        backfaceVisibility: 'hidden',
-                        position: 'absolute'}}>
-                        <img src = "./imagenes/CaraTras.png" alt='Cara Trasera' style = {{
-                            width: '75x',
-                            height: '100px',   
-                            }}
-                        />       
-                    </div> 
-                    <div className="caraFront"style ={{
-                        backfaceVisibility: 'hidden',
-                        position: 'absolute'}}> 
-                        <img src = {carta.image} alt='Cara Frontal' style = {{
-                            width: '75x',
-                            height: '100px',   
-                            }}
-                        />       
-                    </div>    
-                </div>
-            )
-            
-        }
-        
-        const CarasCartas = [
-            {type: "Carta1", image: './imagenes/Carta1.png'},
-            {type: "Carta2", image: './imagenes/Carta2.png'},
-            {type: "Carta3", image: './imagenes/Carta3.png'},
-            {type: "Carta4", image: './imagenes/Carta4.png'},
-            {type: "Carta5", image: './imagenes/Carta5.png'},
-            {type: "Carta6", image: './imagenes/Carta6.png'},
-            {type: "Carta7", image: './imagenes/Carta7.png'},
-            {type: "Carta8", image: './imagenes/Carta8.png'}
-        ]
-
-        function aleatorizarCartas(array){
-            for (let i = array.length; i > 0; i--) {
-                const iAle = Math.floor(Math.random() * i)
-                const temp = array[i-1]
-                array[i-1] = array[iAle]
-                array[iAle] = temp
-            }
-            return array;
-        }
-
-        const Juego = () => {
-            const [cartas, setCartas] = React.useState(() => aleatorizarCartas(CarasCartas.concat(CarasCartas))) 
-            console.log(cartas)
-            
-
-            return (
-                <div>
-                    <h1>JUEGO DE MEMORIA</h1>
-                    <div id ="contenedor" 
-                    style ={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(4, 1fr)',
-                        gridTemplateRows: 'repeat(4, 1fr)',
-                        width: '400px',
-                        height: '400px',
-                        backgroundColor: 'indigo',
-                        justifyItems:'center',
-                        alignItems:'stretch',
-                        margin: '0 auto'
-                    }}>
-                        <Carta
-                            llave = {0}
-                            carta = {CarasCartas[0]}
-                            indice = {0}
-                            Asertada = {false}
-                            Inactiva = {false}
-                            Mostrada = {false}
-                            onClick = {false}
-                            />
-
-                    </div>
-                </div>
-
-            )
-        }
-
-        const root = ReactDOM.createRoot (document.getElementById('root'))
-        root.render(<Juego/>)
-    </script>
-
-        
-    </div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
