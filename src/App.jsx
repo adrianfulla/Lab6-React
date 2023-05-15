@@ -133,7 +133,7 @@ function App() {
     setMovimientos(0)
     setDeshabilitar(false)
 
-    setCartas(shuffleCartas(arrCartas.concat(arrCartas)))
+    setCartas(aleatorizarCartas(arrCartas.concat(arrCartas)))
   };
 
   
